@@ -60,7 +60,7 @@ class ConnectycubeFlutterCallKit {
     CallEventHandler? onCallRejected,
     String? ringtone,
     String? icon,
-    String? color
+    String? color,
   }) {
     _onCallAccepted = onCallAccepted;
     _onCallRejected = onCallRejected;
@@ -159,7 +159,7 @@ class ConnectycubeFlutterCallKit {
   /// Report that the current active call has been accepted by your application
   ///
   static Future<void> reportCallAccepted({
-    required String? sessionId,
+    required String sessionId,
     required int? callType,
   }) async {
     return _methodChannel.invokeMethod(
@@ -168,7 +168,7 @@ class ConnectycubeFlutterCallKit {
 
   /// Report that the current active call has been ended by your application
   static Future<void> reportCallEnded({
-    required String? sessionId,
+    required String sessionId,
   }) async {
     return _methodChannel.invokeMethod("reportCallEnded", {
       'session_id': sessionId,
@@ -179,7 +179,7 @@ class ConnectycubeFlutterCallKit {
   ///
   /// Other platforms than Android and iOS will receive [CallState.unknown]
   static Future<String> getCallState({
-    required String? sessionId,
+    required String sessionId,
   }) async {
     return _methodChannel.invokeMethod("getCallState", {
       'session_id': sessionId,
@@ -190,7 +190,7 @@ class ConnectycubeFlutterCallKit {
 
   /// Updates the current call state
   static Future<void> setCallState({
-    required String? sessionId,
+    required String sessionId,
     required String? callState,
   }) async {
     return _methodChannel.invokeMethod("setCallState", {
@@ -201,7 +201,7 @@ class ConnectycubeFlutterCallKit {
 
   /// Retrieves call information about the call
   static Future<Map<String, dynamic>?> getCallData({
-    required String? sessionId,
+    required String sessionId,
   }) async {
     return _methodChannel.invokeMethod("getCallData", {
       'session_id': sessionId,
@@ -215,7 +215,7 @@ class ConnectycubeFlutterCallKit {
 
   /// Cleans all data related to the call
   static Future<void> clearCallData({
-    required String? sessionId,
+    required String sessionId,
   }) async {
     return _methodChannel.invokeMethod("clearCallData", {
       'session_id': sessionId,
